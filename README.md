@@ -11,8 +11,8 @@ A full-stack MERN URL Shortener. Paste a long URL, get a short one, track every 
 
 | Service | URL |
 |---|---|
-| Frontend | *(Vercel link after deploy)* |
-| Backend API | *(Render link after deploy)* |
+| Frontend | [https://mern-project-01-eight.vercel.app](https://mern-project-01-eight.vercel.app/) |
+| Backend API | [https://snaplink-api-0dat.onrender.com](https://snaplink-api-0dat.onrender.com) |
 
 ---
 
