@@ -1,4 +1,8 @@
 // Dashboard.jsx — Shows all shortened URLs as cards
+// VITE_API_URL is set on Vercel to the Render backend URL
+// In local dev it is empty — the Vite proxy forwards /api to localhost:5000
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 // Responsibilities:
 //   1. Fetch all URLs from backend GET /api/urls when the component loads
 //   2. Re-fetch whenever refreshKey changes (passed from App.jsx)
@@ -25,7 +29,7 @@ export default function Dashboard({ refreshKey }) {
     setError('');
 
     try {
-      const response = await fetch('/api/urls');
+      const response = await fetch(`${API_BASE}/api/urls`);
 
       if (!response.ok) {
         throw new Error('Failed to load URLs');

@@ -1,4 +1,8 @@
 // LinkCard.jsx — Displays one shortened URL as a card
+// VITE_API_URL is the Render backend URL (set on Vercel)
+// Falls back to localhost:5000 in local development
+const SERVER_BASE = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 // Receives a `url` object (from MongoDB) and an `onDelete` callback
 // Each card shows: short URL, original URL, click count, date, Copy button, Delete button
 
@@ -28,7 +32,7 @@ export default function LinkCard({ url, onDelete }) {
 
     try {
       // Call backend DELETE /api/urls/:id
-      const response = await fetch(`/api/urls/${url._id}`, {
+      const response = await fetch(`${SERVER_BASE}/api/urls/${url._id}`, {
         method: 'DELETE',
       });
 

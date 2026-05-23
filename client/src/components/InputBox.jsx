@@ -1,4 +1,8 @@
 // InputBox.jsx — The URL input form
+// VITE_API_URL is set on Vercel to the Render backend URL
+// In local dev it is empty — the Vite proxy forwards /api to localhost:5000
+const API_BASE = import.meta.env.VITE_API_URL || '';
+
 // Responsibilities:
 //   1. Let the user type a long URL
 //   2. Send it to the backend POST /api/shorten
@@ -33,7 +37,7 @@ export default function InputBox({ onShortenSuccess }) {
 
     try {
       // Call our backend API
-      const response = await fetch('/api/shorten', {
+      const response = await fetch(`${API_BASE}/api/shorten`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ originalUrl: longUrl.trim() }),

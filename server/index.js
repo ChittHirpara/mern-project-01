@@ -11,17 +11,17 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import urlRoutes from './routes/url.routes.js';
 
-// Load .env file — reads MONGO_URI, PORT, BASE_URL into process.env
+// Load .env file — in local dev reads from ../.env, on Render env vars are injected directly
 dotenv.config({ path: '../.env' });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // ===== MIDDLEWARE =====
-// cors() allows the React app on port 5173 to call this server on port 5000
-// Without this the browser would block the request (CORS policy)
+// cors() allows the React frontend to call this server
+// CLIENT_URL in .env = http://localhost:5173 locally, Vercel URL in production
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: process.env.CLIENT_URL || 'http://localhost:5173',
 }));
 
 // express.json() lets us read JSON from req.body in our controllers
