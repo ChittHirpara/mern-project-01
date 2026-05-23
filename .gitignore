@@ -1,0 +1,14 @@
+# Environment variables — NEVER push this, contains DB password
+.env
+
+# Dependencies — too large to push, installed via npm install
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Vite build output
+client/dist/
+
+# OS files
+.DS_Store
+Thumbs.db
