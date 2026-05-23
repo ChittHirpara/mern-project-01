@@ -20,8 +20,10 @@ const PORT = process.env.PORT || 5000;
 // ===== MIDDLEWARE =====
 // cors() allows the React frontend to call this server
 // CLIENT_URL in .env = http://localhost:5173 locally, Vercel URL in production
+// We use .trim() to prevent crashes if a space or newline is accidentally pasted in Render
+const clientUrl = (process.env.CLIENT_URL || 'http://localhost:5173').trim();
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: clientUrl,
 }));
 
 // express.json() lets us read JSON from req.body in our controllers
